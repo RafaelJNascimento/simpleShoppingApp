@@ -1,12 +1,19 @@
 import React, {Component} from 'react';
 import {Container, Form, Categories, ContentCategory, Text} from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {StatusBar} from 'react-native';
 
 export default class Home extends Component {
   componentDidMount() {}
   render() {
     return (
       <Container>
+        <StatusBar
+          hidden={false}
+          barStyle={'dark-content'}
+          translucent
+          backgroundColor="transparent"
+        />
         <Form horizontal={true} showsHorizontalScrollIndicator={false}>
           <Categories>
             <ContentCategory>
