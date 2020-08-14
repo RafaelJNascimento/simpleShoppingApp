@@ -13,7 +13,7 @@
   <a href="https://github.com/RafaelJNascimento/simpleShoppingApp/stargazers">
     <img alt="Stargazers" src="https://img.shields.io/github/stars/RafaelJNascimento/simpleShoppingApp">
   </a>
-  <img alt="License" src="https://img.shields.io/github/license/RafaelJNascimento/simpleShoppingApp">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-%2304D361">
 </p>
 
 ## :memo: Licença
