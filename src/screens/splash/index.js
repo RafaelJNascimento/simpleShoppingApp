@@ -1,35 +1,30 @@
-import React, {Component} from 'react';
-import {Container, ContentLogo, Image, ActivityIndicator, Text} from './styles';
+import React, { useState, useEffect } from 'react';
+import { Container, ContentLogo, Image, ActivityIndicator, Text } from './styles';
 import Routes from '../../routes';
 const splashscreen = require('../../assets/icon.png');
+import { useAuth } from '../../context'
 
-export default class Splash extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      timePassed: false,
-    };
-  }
+const splash = () => {
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({timePassed: true});
-    }, 2000);
-  }
+  const { timePassed, load } = useAuth();
 
-  render() {
-    if (!this.state.timePassed) {
-      return (
-        <Container>
-          <ContentLogo>
-            <Image source={splashscreen} />
-            <Text>Iniciando Aplicativo...</Text>
-            <ActivityIndicator color="#2a188e" size="large" />
-          </ContentLogo>
-        </Container>
-      );
-    } else {
-      return <Routes />;
-    }
+  useEffect(() => {
+    load()
+  }, [])
+
+  if (!timePassed) {
+    return (
+      <Container>
+        <ContentLogo>
+          <Image source={splashscreen} />
+          <Text>Iniciando Aplicativo...</Text>
+          <ActivityIndicator color="#fff" size="large" />
+        </ContentLogo>
+      </Container>
+    );
+  } else {
+    return <Routes />
   }
 }
+
+export default splash;

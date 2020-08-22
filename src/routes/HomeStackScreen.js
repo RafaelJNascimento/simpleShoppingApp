@@ -1,19 +1,15 @@
-import 'react-native-gesture-handler';
 import * as React from 'react';
 import {TouchableOpacity, Image, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {NavigationContainer, CommonActions} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
-const icon = require('./assets/icon.png');
-import Home from './screens/home/index';
-import Cart from './screens/cart/index';
+import { CommonActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+const icon = require('../assets/icon.png');
+import Home from '../screens/home/index';
+import Cart from '../screens/cart/index';
 
 const Stack = createStackNavigator();
-const Drawer = createDrawerNavigator();
-//<Icon name="menu" style={{ color: '#000' }} />
 
-const HomeStackScreen = ({navigation}) => (
+const HomeStackScreen = ({ navigation }) => (
   <Stack.Navigator
     initialRouteName="Home"
     screenOptions={{
@@ -28,8 +24,8 @@ const HomeStackScreen = ({navigation}) => (
       options={{
         headerTitle: (
           <>
-            <Image style={{width: 30, height: 30}} source={icon} />{' '}
-            <Text style={{fontSize: 15}}>Simple Shopping App</Text>
+            <Image style={{ width: 30, height: 30 }} source={icon} />{' '}
+            <Text style={{ fontSize: 15 }}>Simple Shopping App</Text>
           </>
         ),
         headerLeft: () => (
@@ -48,7 +44,7 @@ const HomeStackScreen = ({navigation}) => (
                 height: 30,
               }}
               size={30}
-              color="#000"
+              color="#fff"
               name="menu"
             />
           </TouchableOpacity>
@@ -64,7 +60,7 @@ const HomeStackScreen = ({navigation}) => (
               navigation.dispatch(
                 CommonActions.reset({
                   index: 1,
-                  routes: [{name: 'Home'}, {name: 'Cart'}],
+                  routes: [{ name: 'Home' }, { name: 'Cart' }],
                 }),
               );
             }}>
@@ -76,30 +72,24 @@ const HomeStackScreen = ({navigation}) => (
                 height: 30,
               }}
               size={30}
-              color="#000"
+              color="#fff"
               name="cart"
             />
           </TouchableOpacity>
         ),
         headerStyle: {
-          backgroundColor: '#fff',
+          backgroundColor: 'rgb(58, 59, 60)',
           elevation: 0,
           shadowOpacity: 0,
           borderBottomWidth: 0,
         },
-        headerTintColor: '#2a188e',
+        headerTitleStyle: { alignSelf: 'center' },
+        headerTintColor: '#fff',
       }}
     />
     <Stack.Screen name="Cart" component={Cart} />
   </Stack.Navigator>
 );
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="HomeScren" component={HomeStackScreen} />
-      </Drawer.Navigator>
-    </NavigationContainer>
-  );
-}
+
+export default HomeStackScreen;
